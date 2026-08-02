@@ -11,11 +11,11 @@
       <header class="topbar">
         <div class="hero-copy">
           <p class="eyebrow">ShotGantt Web</p>
-          <h1>Editor Gantt semplice e veloce</h1>
-          <p class="subtitle">Modifica la struttura ad albero a sinistra e guarda il Gantt cambiare in tempo reale.</p>
+          <h1>Editor Gantt orizzontale</h1>
+          <p class="subtitle">Osserva il calendario in alto, modifica il Gantt e usa la console sotto per i comandi rapidi.</p>
         </div>
         <div class="topbar-actions">
-          <button id="addTaskBtn">＋ Aggiungi task</button>
+          <button id="addTaskBtn">＋ Nuovo task</button>
           <button id="addSubtaskBtn" class="secondary">＋ Sotto-task</button>
           <button id="resetBtn" class="secondary">↺ Reset</button>
         </div>
@@ -23,39 +23,45 @@
 
       <section class="hero-card">
         <div>
-          <h2>Struttura chiara</h2>
-          <p>Ogni voce è editabile, ordinabile e sincronizzata con la timeline di destra.</p>
+          <h2>Timeline calendario</h2>
+          <p>Lo zoom cambia scala automaticamente tra giorni, settimane, mesi e anni.</p>
         </div>
         <div class="hero-badges">
-          <span>✏️ Modifica testo</span>
-          <span>↕️ Drag & drop</span>
-          <span>🔎 Zoom temporale</span>
+          <span>🗓️ Calendario reale</span>
+          <span>🔎 Zoom scalato</span>
+          <span>⌨️ Console comandi</span>
         </div>
       </section>
 
       <main class="workspace">
-        <section class="panel">
-          <div class="panel-header">
-            <h2>Struttura ad albero</h2>
-            <span id="summaryLabel">0 task</span>
-          </div>
-          <div id="treeView" class="tree-view"></div>
-        </section>
-
         <section class="panel gantt-panel">
           <div class="panel-header">
-            <h2>Timeline</h2>
+            <div class="panel-title">
+              <h2>Timeline</h2>
+              <span id="timelineRangeLabel" class="range-label">2026</span>
+            </div>
             <div class="timeline-controls">
               <button id="zoomOutBtn" class="secondary">− Zoom</button>
-              <span id="zoomLabel">14 giorni</span>
+              <span id="zoomLabel">giorni</span>
               <button id="zoomInBtn" class="secondary">+ Zoom</button>
             </div>
           </div>
-          <div class="hint">Modifica il testo nell’albero o trascina le barre per aggiornare entrambi i lati.</div>
           <div id="timelineHeader" class="timeline-header"></div>
           <div id="ganttRows" class="gantt-rows"></div>
         </section>
       </main>
+
+      <section class="console-panel">
+        <div class="console-header">
+          <h3>Console comandi</h3>
+          <span>Scrivi comandi testuali per interrogare o modificare il Gantt</span>
+        </div>
+        <div id="consoleOutput" class="console-output"></div>
+        <form id="consoleForm" class="console-form">
+          <input id="consoleInput" type="text" placeholder="Esempio: list, show concept, rename concept Revisione" />
+          <button type="submit">Esegui</button>
+        </form>
+      </section>
     </div>
 
     <script type="module" src="app.js"></script>

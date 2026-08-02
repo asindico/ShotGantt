@@ -3,7 +3,6 @@
   --bg: #070b14;
   --bg-2: #10172a;
   --panel: rgba(10, 16, 30, 0.9);
-  --panel-2: rgba(17, 25, 41, 0.95);
   --border: rgba(255, 255, 255, 0.12);
   --text: #f8fafc;
   --muted: #94a3b8;
@@ -53,7 +52,7 @@ button.secondary {
 }
 
 .app-shell {
-  max-width: 1450px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 1.5rem;
 }
@@ -82,6 +81,7 @@ button.secondary {
 
 h1,
 h2,
+h3,
 p {
   margin: 0;
 }
@@ -132,9 +132,7 @@ p {
 }
 
 .workspace {
-  display: grid;
-  grid-template-columns: minmax(320px, 390px) 1fr;
-  gap: 1rem;
+  display: block;
 }
 
 .panel {
@@ -151,86 +149,17 @@ p {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 0.9rem;
+  gap: 0.75rem;
 }
 
-.tree-view {
+.panel-title {
   display: grid;
-  gap: 0.7rem;
+  gap: 0.25rem;
 }
 
-.tree-node {
-  background: linear-gradient(135deg, rgba(17, 25, 41, 0.96), rgba(10, 16, 30, 0.93));
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  padding: 0.8rem;
-  transition: border-color 160ms ease, transform 160ms ease;
-}
-
-.tree-node:hover {
-  border-color: rgba(56, 189, 248, 0.45);
-  transform: translateY(-1px);
-}
-
-.tree-node-header {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.tree-node-name {
-  flex: 1;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
-  padding: 0.68rem 0.75rem;
-}
-
-.tree-node-name:focus {
-  outline: 2px solid rgba(56, 189, 248, 0.3);
-  border-color: var(--accent);
-}
-
-.tree-node-actions {
-  display: flex;
-  gap: 0.35rem;
-}
-
-.tree-node-actions button {
-  width: 2.2rem;
-  height: 2.2rem;
-  padding: 0;
-  border-radius: 0.75rem;
-  box-shadow: none;
-}
-
-.tree-node-children {
-  margin-left: 1rem;
-  margin-top: 0.7rem;
-  display: grid;
-  gap: 0.55rem;
-}
-
-.tree-node-fields {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.7rem;
-  margin-top: 0.7rem;
-}
-
-.tree-node-fields label {
-  display: grid;
-  gap: 0.35rem;
+.range-label {
   color: var(--muted);
-  font-size: 0.85rem;
-}
-
-.tree-node-fields input {
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.06);
-  color: var(--text);
-  padding: 0.6rem 0.7rem;
+  font-size: 0.9rem;
 }
 
 .gantt-panel {
@@ -262,13 +191,17 @@ p {
   color: var(--muted);
   font-size: 0.75rem;
   border: 1px solid rgba(56, 189, 248, 0.16);
+  min-height: 54px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .timeline-cell strong {
   display: block;
   color: var(--text);
   font-size: 0.95rem;
-  margin-top: 0.2rem;
+  margin-top: 0.15rem;
 }
 
 .gantt-rows {
@@ -333,14 +266,78 @@ p {
   background: rgba(255, 255, 255, 0.9);
 }
 
-@media (max-width: 1000px) {
-  .workspace {
-    grid-template-columns: 1fr;
-  }
+.console-panel {
+  margin-top: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  background: rgba(10, 16, 30, 0.95);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  padding: 1rem;
+}
 
+.console-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.console-header span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.console-output {
+  min-height: 140px;
+  max-height: 220px;
+  overflow: auto;
+  padding: 0.75rem;
+  border-radius: 0.9rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: grid;
+  gap: 0.45rem;
+}
+
+.console-line {
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.92rem;
+  color: var(--text);
+}
+
+.console-line strong {
+  color: var(--accent);
+}
+
+.console-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.console-form input {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  padding: 0.72rem 0.8rem;
+}
+
+.console-form button {
+  white-space: nowrap;
+}
+
+@media (max-width: 1000px) {
   .topbar,
-  .hero-card {
+  .hero-card,
+  .console-header {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .gantt-row {
+    grid-template-columns: 1fr;
   }
 }
