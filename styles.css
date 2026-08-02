@@ -1,0 +1,346 @@
+:root {
+  color-scheme: dark;
+  --bg: #070b14;
+  --bg-2: #10172a;
+  --panel: rgba(10, 16, 30, 0.9);
+  --panel-2: rgba(17, 25, 41, 0.95);
+  --border: rgba(255, 255, 255, 0.12);
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --accent: #38bdf8;
+  --accent-2: #818cf8;
+  --success: #34d399;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 24%),
+    linear-gradient(135deg, var(--bg), var(--bg-2));
+  color: var(--text);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 999px;
+  padding: 0.72rem 1rem;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 700;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.16);
+}
+
+button:hover {
+  transform: translateY(-1px);
+}
+
+button.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.app-shell {
+  max-width: 1450px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.hero-copy h1 {
+  font-size: clamp(1.5rem, 2.2vw, 2.2rem);
+  margin: 0.15rem 0;
+}
+
+.eyebrow {
+  margin: 0 0 0.25rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+.subtitle,
+.hint {
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.topbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.hero-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 1.1rem;
+  background: linear-gradient(135deg, rgba(17, 25, 41, 0.95), rgba(10, 16, 30, 0.9));
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+  margin-bottom: 1rem;
+}
+
+.hero-card p {
+  color: var(--muted);
+  margin-top: 0.35rem;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.hero-badges span {
+  padding: 0.45rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(320px, 390px) 1fr;
+  gap: 1rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 1rem;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(18px);
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.9rem;
+}
+
+.tree-view {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.tree-node {
+  background: linear-gradient(135deg, rgba(17, 25, 41, 0.96), rgba(10, 16, 30, 0.93));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  padding: 0.8rem;
+  transition: border-color 160ms ease, transform 160ms ease;
+}
+
+.tree-node:hover {
+  border-color: rgba(56, 189, 248, 0.45);
+  transform: translateY(-1px);
+}
+
+.tree-node-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.tree-node-name {
+  flex: 1;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  padding: 0.68rem 0.75rem;
+}
+
+.tree-node-name:focus {
+  outline: 2px solid rgba(56, 189, 248, 0.3);
+  border-color: var(--accent);
+}
+
+.tree-node-actions {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.tree-node-actions button {
+  width: 2.2rem;
+  height: 2.2rem;
+  padding: 0;
+  border-radius: 0.75rem;
+  box-shadow: none;
+}
+
+.tree-node-children {
+  margin-left: 1rem;
+  margin-top: 0.7rem;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.tree-node-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+}
+
+.tree-node-fields label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.tree-node-fields input {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.8rem;
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  padding: 0.6rem 0.7rem;
+}
+
+.gantt-panel {
+  overflow: hidden;
+}
+
+.timeline-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.timeline-controls span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.timeline-header {
+  display: grid;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+}
+
+.timeline-cell {
+  text-align: center;
+  padding: 0.45rem 0;
+  border-radius: 0.7rem;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--muted);
+  font-size: 0.75rem;
+  border: 1px solid rgba(56, 189, 248, 0.16);
+}
+
+.timeline-cell strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.95rem;
+  margin-top: 0.2rem;
+}
+
+.gantt-rows {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.gantt-row {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.gantt-label {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.gantt-track {
+  position: relative;
+  height: 44px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.08));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.gantt-bar {
+  position: absolute;
+  top: 5px;
+  bottom: 5px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--accent), var(--success));
+  cursor: grab;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 0.35rem;
+  min-width: 28px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16);
+  transition: transform 150ms ease;
+}
+
+.gantt-bar:hover {
+  transform: scaleY(1.02);
+}
+
+.gantt-bar.dragging {
+  opacity: 0.85;
+}
+
+.gantt-bar:active {
+  cursor: grabbing;
+}
+
+.bar-handle {
+  width: 8px;
+  height: 20px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+@media (max-width: 1000px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .topbar,
+  .hero-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

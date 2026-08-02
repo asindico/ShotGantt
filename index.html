@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShotGantt Editor</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="hero-copy">
+          <p class="eyebrow">ShotGantt Web</p>
+          <h1>Editor Gantt semplice e veloce</h1>
+          <p class="subtitle">Modifica la struttura ad albero a sinistra e guarda il Gantt cambiare in tempo reale.</p>
+        </div>
+        <div class="topbar-actions">
+          <button id="addTaskBtn">＋ Aggiungi task</button>
+          <button id="addSubtaskBtn" class="secondary">＋ Sotto-task</button>
+          <button id="resetBtn" class="secondary">↺ Reset</button>
+        </div>
+      </header>
+
+      <section class="hero-card">
+        <div>
+          <h2>Struttura chiara</h2>
+          <p>Ogni voce è editabile, ordinabile e sincronizzata con la timeline di destra.</p>
+        </div>
+        <div class="hero-badges">
+          <span>✏️ Modifica testo</span>
+          <span>↕️ Drag & drop</span>
+          <span>🔎 Zoom temporale</span>
+        </div>
+      </section>
+
+      <main class="workspace">
+        <section class="panel">
+          <div class="panel-header">
+            <h2>Struttura ad albero</h2>
+            <span id="summaryLabel">0 task</span>
+          </div>
+          <div id="treeView" class="tree-view"></div>
+        </section>
+
+        <section class="panel gantt-panel">
+          <div class="panel-header">
+            <h2>Timeline</h2>
+            <div class="timeline-controls">
+              <button id="zoomOutBtn" class="secondary">− Zoom</button>
+              <span id="zoomLabel">14 giorni</span>
+              <button id="zoomInBtn" class="secondary">+ Zoom</button>
+            </div>
+          </div>
+          <div class="hint">Modifica il testo nell’albero o trascina le barre per aggiornare entrambi i lati.</div>
+          <div id="timelineHeader" class="timeline-header"></div>
+          <div id="ganttRows" class="gantt-rows"></div>
+        </section>
+      </main>
+    </div>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
